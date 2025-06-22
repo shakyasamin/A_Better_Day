@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-       
+        
         TabView {
             
             TodayView()
@@ -36,6 +36,7 @@ struct HomeView: View {
                     Image(systemName: "gear")
                 }
         }
+        .padding()
     }
 }
 
