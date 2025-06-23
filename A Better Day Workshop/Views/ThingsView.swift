@@ -38,8 +38,18 @@ struct ThingsView: View {
                     Spacer()
                     
                     Button{
-                        //Add the thing to today
-                        today.things.append(thing)
+                        if today.things.contains(thing){
+                            //Remove the thing from today
+                            today.things.removeAll { t in
+                                t == thing
+                            }
+                            try? context.save()
+                        }else {
+                            //Add the thing to today
+                            today.things.append(thing)
+                        }
+                        
+                        
                     } label: {
                         //If this is already in Today's thing listy, show a solid checkmark instead
                         if today.things.contains(thing){
@@ -47,7 +57,7 @@ struct ThingsView: View {
                                 .foregroundStyle(.blue)
                         }else {
                             Image(systemName: "checkmark.circle")
-
+                            
                         }
                     }
                 }
